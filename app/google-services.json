@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "761267899410",
+    "project_id": "vacation-home-b1a76",
+    "storage_bucket": "vacation-home-b1a76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761267899410:android:ac1657b6284acd30811ccb",
+        "android_client_info": {
+          "package_name": "com.miladev.vacationhome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761267899410-fitoqj5l4s4ojm4r64j73cgmtomuk546.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miladev.vacationhome",
+            "certificate_hash": "c7c6b8b927a5008f863a771c5b351ab6b823323b"
+          }
+        },
+        {
+          "client_id": "761267899410-iv9voq78gtv8u54bkf4usm1661sa8dhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZhQsfA9bwm_t-fuWVUiEHKPhXyKhD9zY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761267899410-iv9voq78gtv8u54bkf4usm1661sa8dhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
