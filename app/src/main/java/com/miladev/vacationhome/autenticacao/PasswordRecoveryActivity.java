@@ -20,12 +20,12 @@ public class PasswordRecoveryActivity extends AppCompatActivity {
     }
 
     private void configClick(){
-        findViewById(R.id.imageB_voltar).setOnClickListener(view -> finish());
+        findViewById(R.id.imageB_back).setOnClickListener(view -> finish());
     }
 
     private void startComponents(){
-        TextView text_titulo = findViewById(R.id.text_titulo_toolbar);
-        text_titulo.setText("Recovery your account");
+        TextView text_title = findViewById(R.id.text_title_toolbar);
+        text_title.setText("Recovery your account");
     }
 
 }

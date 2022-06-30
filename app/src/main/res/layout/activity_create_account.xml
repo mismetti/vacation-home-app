@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_voltar"
+        layout="@layout/toolbar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
@@ -86,10 +86,21 @@
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Sign-in"
+                android:onClick="validateData"
                 android:textAllCaps="false"
                 android:textColor="#01579B"
                 android:textSize="16sp"></android.widget.Button>
 
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:indeterminateTint="@color/lightblue"
+                android:visibility="visible">
+
+            </ProgressBar>
 
         </LinearLayout>
 
