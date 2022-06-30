@@ -8,8 +8,11 @@
         <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1" />
         <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/drawable/ic_baseline_image_search_24.xml" value="0.3635" />
         <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/drawable/ic_baseline_wb_sunny_24.xml" value="0.2125" />
+        <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/layout/activity_create_account.xml" value="0.1" />
         <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/layout/activity_password_recovery.xml" value="0.25" />
+        <entry key="..\:/Users/Misaki Mei/AndroidStudioProjects/vacationhome/app/src/main/res/layout/toolbar_voltar.xml" value="0.1" />
       </map>
     </option>
   </component>
