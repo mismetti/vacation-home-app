@@ -31,7 +31,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         startComponents();
     }
 
-    public void validateData(View view){
+    public void validateDataCreateAccount(View view){
         String fullname = edit_fullname.getText().toString();
         String email = edit_email.getText().toString();
         String phone = edit_phone.getText().toString();
@@ -94,6 +94,8 @@ public class CreateAccountActivity extends AppCompatActivity {
             }else{
                 String error = task.getException().getMessage();
                 Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+
+                progressBar.setVisibility(View.GONE);
             }
         });
 

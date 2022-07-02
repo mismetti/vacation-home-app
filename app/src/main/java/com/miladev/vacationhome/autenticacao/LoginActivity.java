@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void validadeData(View view){
+    public void validateDataLogin(View view){
 
         String email = edit_email.getText().toString();
         String password = edit_password.getText().toString();
@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 edit_password.requestFocus();
                 edit_password.setError("Password is empty");
+
             }
 
         }else{
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         String error = task.getException().getMessage();
                         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
 
         });
