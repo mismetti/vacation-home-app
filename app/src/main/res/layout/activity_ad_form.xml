@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AdFormActivity"
+    android:background="@color/blue_background">
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/toolbar_back_save"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                app:cardCornerRadius="5dp"
+                android:backgroundTint="@color/lightblue">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:src="@drawable/ic_baseline_photo_size_select_actual_24"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"></ImageView>
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/ad_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/roboto"
+                android:background="@drawable/bg_edit_text"
+                android:padding="16dp"></EditText>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:layout_marginStart="24dp"
+              android:layout_marginTop="16dp"
+              android:layout_marginEnd="24dp"
+              android:background="@drawable/bg_edit_text">
+
+              <EditText
+                  android:id="@+id/ad_desc"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Description"
+                  android:layout_marginStart="8dp"
+                  android:backgroundTint="@color/blue_background"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"></EditText>
+
+
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rooms"
+                        android:gravity="center"
+                        android:textColor="@color/lightblue"
+                        ></TextView>
+
+                    <EditText
+                        android:id="@+id/ad_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ex: 1"
+                        android:background="@drawable/bg_edit_text"
+                        android:padding="16dp"
+                        android:layout_marginTop="4dp"
+                        ></EditText>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bathrooms"
+                        android:gravity="center"
+                        android:textColor="@color/lightblue"
+                        ></TextView>
+
+                    <EditText
+                        android:id="@+id/ad_bath"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ex: 1"
+                        android:background="@drawable/bg_edit_text"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        ></EditText>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Garage"
+                        android:gravity="center"
+                        android:textColor="@color/lightblue"
+                        ></TextView>
+
+                    <EditText
+                        android:id="@+id/qt_garage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ex: 1"
+                        android:background="@drawable/bg_edit_text"
+                        android:padding="16dp"
+                        android:layout_marginTop="4dp"
+                        ></EditText>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/check_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/lightblue"
+                android:text="Available"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:checked="true"
+                android:textColor="@color/lightblue"
+                ></CheckBox>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
