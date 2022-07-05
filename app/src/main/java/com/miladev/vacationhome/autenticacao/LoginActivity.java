@@ -79,6 +79,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void configClick(){
+
+        findViewById(R.id.imageB_back).setOnClickListener(view -> finish());
+
         findViewById(R.id.create_account).setOnClickListener(view ->
                 startActivity(new Intent(this, CreateAccountActivity.class)));
 
