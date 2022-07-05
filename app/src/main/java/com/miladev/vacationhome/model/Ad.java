@@ -3,7 +3,7 @@ package com.miladev.vacationhome.model;
 import com.google.firebase.database.DatabaseReference;
 import com.miladev.vacationhome.helper.FirebaseHelper;
 
-public class Product {
+public class Ad {
 
     private String id;
     private String title;
@@ -12,11 +12,21 @@ public class Product {
     private String bathroom;
     private String garage;
     private boolean status;
+    private String urlImage;
 
-    public Product() {
+    public Ad() {
         DatabaseReference reference = FirebaseHelper.getDatabaseReference();
         this.setId(reference.push().getKey());
 
+    }
+
+    public void save(){
+        DatabaseReference reference = FirebaseHelper.getDatabaseReference()
+                .child("ad")
+                .child(FirebaseHelper.getFirebaseId())
+                .child(this.getId());
+
+        reference.setValue(this);
     }
 
     public String getId() {
@@ -73,5 +83,13 @@ public class Product {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

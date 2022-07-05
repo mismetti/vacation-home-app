@@ -26,6 +26,8 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_ad"
+                android:onClick="verifyPermissionGallery"
                 android:layout_marginTop="24dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="140dp"
@@ -34,9 +36,11 @@
                 android:backgroundTint="@color/lightblue">
 
                 <ImageView
-                    android:layout_width="50dp"
+                    android:id="@+id/img_ad"
+                    android:layout_width="match_parent"
                     android:src="@drawable/ic_baseline_photo_size_select_actual_24"
-                    android:layout_height="50dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:layout_gravity="center"></ImageView>
             </androidx.cardview.widget.CardView>
 
@@ -182,6 +186,13 @@
                 android:textColor="@color/lightblue"
                 ></CheckBox>
 
+            <ProgressBar
+                tools:visibility="visible"
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/lightblue"
+                android:layout_gravity="center_horizontal"></ProgressBar>
 
 
         </LinearLayout>
