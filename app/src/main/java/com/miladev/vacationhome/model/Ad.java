@@ -13,6 +13,7 @@ public class Ad {
     private String garage;
     private boolean status;
     private String urlImage;
+    private String price;
 
     public Ad() {
         DatabaseReference reference = FirebaseHelper.getDatabaseReference();
@@ -91,5 +92,13 @@ public class Ad {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

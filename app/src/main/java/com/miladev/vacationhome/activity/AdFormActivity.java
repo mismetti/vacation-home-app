@@ -38,6 +38,7 @@ public class AdFormActivity extends AppCompatActivity {
     private EditText ad_room;
     private EditText ad_bath;
     private EditText ad_garage;
+    private EditText ad_price;
     private CheckBox check_available;
 
     private ImageView img_ad;
@@ -100,6 +101,7 @@ public class AdFormActivity extends AppCompatActivity {
         String room = ad_room.getText().toString();
         String bath = ad_bath.getText().toString();
         String garage = ad_garage.getText().toString();
+        String price = ad_price.getText().toString();
 
         if (!title.isEmpty()){
 
@@ -111,18 +113,28 @@ public class AdFormActivity extends AppCompatActivity {
 
                         if (!garage.isEmpty()){
 
-                            if(ad == null) ad = new Ad();
-                            ad.setTitle(title);
-                            ad.setDescription(desc);
-                            ad.setRoom(room);
-                            ad.setBathroom(bath);
-                            ad.setGarage(garage);
-                            ad.setStatus(check_available.isChecked());
+                            if (!price.isEmpty()){
 
-                            if (imagePath != null){
-                                saveImageAd();
+                                if(ad == null) ad = new Ad();
+                                ad.setTitle(title);
+                                ad.setDescription(desc);
+                                ad.setRoom(room);
+                                ad.setBathroom(bath);
+                                ad.setGarage(garage);
+                                ad.setStatus(check_available.isChecked());
+                                ad.setPrice(price);
+
+                                if (imagePath != null){
+                                    saveImageAd();
+                                }else{
+                                    Toast.makeText(this, "Select a image for ad.", Toast.LENGTH_SHORT).show();
+                                }
+
                             }else{
-                                Toast.makeText(this, "Select a image for ad.", Toast.LENGTH_SHORT).show();
+
+                                ad_price.requestFocus();
+                                ad_price.setError("Price is not defined");
+
                             }
 
                         }else{
@@ -174,6 +186,7 @@ public class AdFormActivity extends AppCompatActivity {
         ad_room = findViewById(R.id.ad_room);
         ad_bath = findViewById(R.id.ad_bath);
         ad_garage = findViewById(R.id.qt_garage);
+        ad_price = findViewById(R.id.ad_price);
         check_available = findViewById(R.id.check_available);
         img_ad = findViewById(R.id.img_ad);
 
