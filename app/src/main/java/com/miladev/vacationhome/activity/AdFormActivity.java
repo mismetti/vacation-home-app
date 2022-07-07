@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.gun0912.tedpermission.normal.TedPermission;
 import com.miladev.vacationhome.R;
 import com.miladev.vacationhome.helper.FirebaseHelper;
 import com.miladev.vacationhome.model.Ad;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,6 +42,7 @@ public class AdFormActivity extends AppCompatActivity {
     private EditText ad_garage;
     private EditText ad_price;
     private CheckBox check_available;
+    private ProgressBar progressBar;
 
     private ImageView img_ad;
     private String imagePath;
@@ -54,7 +57,29 @@ public class AdFormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ad_form);
 
         startComponents();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            ad = (Ad) bundle.getSerializable("ad");
+
+            configData();
+        }
+
+
         configClick();
+    }
+
+    private void configData() {
+
+        Picasso.get().load(ad.getUrlImage()).into(img_ad);
+        ad_title.setText(ad.getTitle());
+        ad_desc.setText(ad.getDescription());
+        ad_bath.setText(ad.getBathroom());
+        ad_garage.setText(ad.getGarage());
+        ad_room.setText(ad.getRoom());
+        ad_price.setText(ad.getPrice());
+        check_available.setChecked(ad.isStatus());
+
     }
 
     private void openGallery(){
@@ -123,11 +148,15 @@ public class AdFormActivity extends AppCompatActivity {
                                 ad.setGarage(garage);
                                 ad.setStatus(check_available.isChecked());
                                 ad.setPrice(price);
-
-                                if (imagePath != null){
+                                
+                                if(imagePath != null){
                                     saveImageAd();
                                 }else{
-                                    Toast.makeText(this, "Select a image for ad.", Toast.LENGTH_SHORT).show();
+                                    if (ad.getUrlImage() != null){
+                                        ad.save();
+                                    }else{
+                                        Toast.makeText(this, "Select a image for ad.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
 
                             }else{
@@ -161,6 +190,9 @@ public class AdFormActivity extends AppCompatActivity {
     }
 
     private void saveImageAd(){
+
+        progressBar.setVisibility(View.VISIBLE);
+
         StorageReference storageReference = FirebaseHelper.getStorageReference()
                 .child("image")
                 .child("ad")
@@ -174,9 +206,12 @@ public class AdFormActivity extends AppCompatActivity {
 
             ad.save();
 
-            //finish();
+            finish();
 
-        })).addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
+        })).addOnFailureListener(e ->{
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void startComponents(){
@@ -189,6 +224,7 @@ public class AdFormActivity extends AppCompatActivity {
         ad_price = findViewById(R.id.ad_price);
         check_available = findViewById(R.id.check_available);
         img_ad = findViewById(R.id.img_ad);
+        progressBar = findViewById(R.id.progressBar);
 
         TextView text_titulo = findViewById(R.id.text_title_toolbar);
         text_titulo.setText("New Ad");

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             popupMenu.setOnMenuItemClickListener(menuItem -> {
                 if(menuItem.getItemId() == R.id.menu_filter){
-                    startActivity(new Intent(this, LoginActivity.class));
+                    startActivity(new Intent(this, FilterAdActivity.class));
                 }else if(menuItem.getItemId() == R.id.menu_my_ads){
                     if(FirebaseHelper.getIsAuth()){
                         startActivity(new Intent(this, MyAdActivity.class));

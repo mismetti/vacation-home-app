@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MyAdActivity extends AppCompatActivity {
+public class MyAdActivity extends AppCompatActivity implements AdAdapter.OnClick {
 
     private List<Ad> adList = new ArrayList<>();
 
@@ -39,14 +41,29 @@ public class MyAdActivity extends AppCompatActivity {
 
         startComponents();
         configRv();
-        recoveryAds();
+        configClick();
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        recoveryAds();
+    }
+
+    private void configClick(){
+        findViewById(R.id.ib_Add).setOnClickListener(view -> startActivity(new Intent(this, AdFormActivity.class))
+        );
+
+        findViewById(R.id.imageB_back).setOnClickListener(view -> finish());
+    }
+
     private void configRv(){
         rv_ads.setLayoutManager(new LinearLayoutManager(this));
         rv_ads.setHasFixedSize(true);
-        adAdapter = new AdAdapter(adList);
+        adAdapter = new AdAdapter(adList, this);
         rv_ads.setAdapter(adAdapter);
     }
 
@@ -64,12 +81,11 @@ public class MyAdActivity extends AppCompatActivity {
                         Ad ad = snap.getValue(Ad.class);
                         adList.add(ad);
                     }
-                    text_alert.setText("");
+                    text_alert.setVisibility(View.GONE);
                 }else{
                     text_alert.setText("No ads registered...");
                 }
                 progressBar.setVisibility(View.GONE);
-
                 Collections.reverse(adList);
                 adAdapter.notifyDataSetChanged();
             }
@@ -83,6 +99,7 @@ public class MyAdActivity extends AppCompatActivity {
     }
 
     private void startComponents(){
+
         TextView text_title = findViewById(R.id.text_title_toolbar);
         text_title.setText("My Ads");
 
@@ -90,5 +107,12 @@ public class MyAdActivity extends AppCompatActivity {
         text_alert = findViewById(R.id.text_alert);
         rv_ads = findViewById(R.id.rv_ads);
 
+    }
+
+    @Override
+    public void OnClickListener(Ad ad) {
+        Intent intent = new Intent(this, AdFormActivity.class);
+        intent.putExtra("ad",ad);
+        startActivity(intent);
     }
 }

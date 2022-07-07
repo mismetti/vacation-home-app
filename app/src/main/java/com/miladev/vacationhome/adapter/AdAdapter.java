@@ -18,9 +18,11 @@ import java.util.List;
 public class AdAdapter extends RecyclerView.Adapter<AdAdapter.MyViewHolder> {
 
     private List<Ad> adList;
+    private OnClick onClick;
 
-    public AdAdapter(List<Ad> adList) {
+    public AdAdapter(List<Ad> adList, OnClick onClick) {
         this.adList = adList;
+        this.onClick = onClick;
     }
 
     @NonNull
@@ -39,12 +41,18 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.MyViewHolder> {
         holder.text_desc.setText(ad.getTitle());
         holder.text_date.setText("");
         holder.text_price.setText(ad.getPrice());
+        holder.itemView.setOnClickListener(view -> onClick.OnClickListener(ad));
 
     }
 
     @Override
     public int getItemCount() {
         return adList.size();
+    }
+
+    public interface OnClick{
+        public void OnClickListener(Ad ad);
+
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{

@@ -3,7 +3,9 @@ package com.miladev.vacationhome.model;
 import com.google.firebase.database.DatabaseReference;
 import com.miladev.vacationhome.helper.FirebaseHelper;
 
-public class Ad {
+import java.io.Serializable;
+
+public class Ad implements Serializable{
 
     private String id;
     private String title;
