@@ -1,6 +1,7 @@
 package com.miladev.vacationhome.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,8 @@ import com.miladev.vacationhome.R;
 import com.miladev.vacationhome.adapter.AdAdapter;
 import com.miladev.vacationhome.helper.FirebaseHelper;
 import com.miladev.vacationhome.model.Ad;
+import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
+import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +34,7 @@ public class MyAdActivity extends AppCompatActivity implements AdAdapter.OnClick
 
     private ProgressBar progressBar;
     private TextView text_alert;
-    private RecyclerView rv_ads;
+    private SwipeableRecyclerView rv_ads;
     private AdAdapter adAdapter;
 
     @Override
@@ -65,6 +68,37 @@ public class MyAdActivity extends AppCompatActivity implements AdAdapter.OnClick
         rv_ads.setHasFixedSize(true);
         adAdapter = new AdAdapter(adList, this);
         rv_ads.setAdapter(adAdapter);
+
+
+        rv_ads.setListener(new SwipeLeftRightCallback.Listener() {
+            @Override
+            public void onSwipedLeft(int position) {
+
+            }
+
+            @Override
+            public void onSwipedRight(int position) {
+                showDialogDelete(position);
+            }
+        });
+
+    }
+
+    private void showDialogDelete(int pos){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you would like to delete this");
+        builder.setTitle("Delete this?");
+        builder.setNegativeButton("No", ((dialogInterface, i) -> {
+            dialogInterface.dismiss();
+            adAdapter.notifyDataSetChanged();
+        }));
+        builder.setPositiveButton("Yes", ((dialogInterface, i) -> {
+
+            adList.get(pos).delete();
+            adAdapter.notifyItemRemoved(pos);
+        }));
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void recoveryAds(){

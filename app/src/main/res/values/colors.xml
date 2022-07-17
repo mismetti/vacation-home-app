@@ -11,4 +11,5 @@
     <color name="lightblue">#00B0FF</color>
     <color name="morelightblue">#81D4FA</color>
     <color name="blue_background">#E1F5FE</color>
+    <color name="delete">#F44336</color>
 </resources>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vacationhome">
         <activity
+            android:name=".activity.AdDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MyAccountActivity"
             android:exported="false" />
         <activity

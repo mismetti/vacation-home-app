@@ -1,6 +1,7 @@
 package com.miladev.vacationhome.model;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
 import com.miladev.vacationhome.helper.FirebaseHelper;
 
 import java.io.Serializable;
@@ -30,6 +31,23 @@ public class Ad implements Serializable{
                 .child(this.getId());
 
         reference.setValue(this);
+    }
+
+    public void delete(){
+        DatabaseReference reference = FirebaseHelper.getDatabaseReference()
+                .child("ad")
+                .child(FirebaseHelper.getFirebaseId())
+                .child(this.getId());
+
+        reference.removeValue().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                StorageReference storageReference = FirebaseHelper.getStorageReference()
+                        .child("image")
+                        .child("ad")
+                        .child(this.getId() + ".jpeg");
+                storageReference.delete();
+            }
+        });
     }
 
     public String getId() {
